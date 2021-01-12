@@ -17,6 +17,15 @@
   },
   "homepage": "https://github.com/niuyi1017/webpack-learn#readme",
   "devDependencies": {
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.1",
+    "postcss": "^8.2.4",
+    "postcss-loader": "^4.1.0",
+    "style-loader": "^2.0.0",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^4.3.2",
+    "url-loader": "^4.1.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   }
