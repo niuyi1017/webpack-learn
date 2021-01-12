@@ -1,13 +1,23 @@
 const path = require('path')
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
-  mode: 'develop',
+  mode: 'development',
   entry: {
     main: './src/index.js'
   },
+  devtool: "cheap-module-eval-source-map",
+  devServer: {
+    contentBase:"./dist",
+    open: true,
+    port: 8080,
+    hot: true,
+    hotOnly: true
+  },
   module:{
-    roles: [
+    rules: [
       {
         test: /\.(jpg|png|gif)$/,
         use: {
@@ -34,12 +44,20 @@ module.exports = {
             modules:true
           }
         }, 'stylus-loader', "postcss-loader"]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', "css-loader", "postcss-loader"]
       }
     ]
   },
-  plugins:[new HtmlWebpackPlugin({
-    template: "src/index.html"
-  })],
+  plugins:[
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "src/index.html"
+    }),
+    new webpack.HotModuleReplacementPlugin()
+],
   output:{
     filename: 'bundler.js',
     path: path.resolve(__dirname, 'dist')
