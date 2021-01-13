@@ -62,5 +62,4 @@ module.exports = {
     filename: 'bundler.js',
     path: path.resolve(__dirname, 'dist')
   }
-    
 }
