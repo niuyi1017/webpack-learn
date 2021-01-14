@@ -52,6 +52,12 @@ module.exports = {
       template: "src/index.html"
     }),
   ],
+  optimization: {
+    usedExports: true,
+    splitChunks: {
+      chunks: 'all'
+    },
+  },
   output:{
     filename: 'bundler.js',
     path: path.resolve(__dirname, '../dist')
