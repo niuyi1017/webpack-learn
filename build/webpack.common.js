@@ -59,7 +59,7 @@ module.exports = {
     },
   },
   output:{
-    filename: 'bundler.js',
+    filename: '[name].[contentHash].js',
     path: path.resolve(__dirname, '../dist')
   }
 }
