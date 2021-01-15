@@ -47,7 +47,7 @@ module.exports = {
     ]
   },
   plugins:[
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "src/index.html"
     }),
@@ -59,7 +59,7 @@ module.exports = {
     },
   },
   output:{
-    filename: 'bundler.js',
+    filename: '[name].[contentHash].js',
     path: path.resolve(__dirname, '../dist')
   }
 }
