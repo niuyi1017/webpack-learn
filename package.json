@@ -2,15 +2,9 @@
   "name": "webpack-learn",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "sideEffects": [
-    "*.css"
-  ],
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
-    "dev": "webpack-dev-server --config ./build/webpack.dev.js",
-    "build": "webpack --config ./build/webpack.prod.js"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -23,27 +17,9 @@
   },
   "homepage": "https://github.com/niuyi1017/webpack-learn#readme",
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^5.0.1",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^4.5.1",
-    "postcss": "^8.2.4",
-    "postcss-loader": "^4.1.0",
-    "style-loader": "^2.0.0",
-    "stylus": "^0.54.8",
-    "stylus-loader": "^4.3.2",
-    "url-loader": "^4.1.1",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10",
-    "webpack-merge": "^5.7.3"
-  },
-  "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@babel/runtime": "^7.12.5"
+    "webpack-cli": "^3.1.2"
   }
+  
 }

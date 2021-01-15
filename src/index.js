@@ -1,5 +1,4 @@
-const arr = [Promise()]
-console.log("123")
-arr.map(item => {
-  console.log(item)
-})
+import * as math from "./math"
+import * as string from "./string"
+
+export default { math, string }
