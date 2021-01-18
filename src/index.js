@@ -1,5 +1,9 @@
-const arr = [Promise()]
-console.log("123")
-arr.map(item => {
-  console.log(item)
+import Vue from "vue"
+
+var app = new Vue({
+  el: '#app',
+  template: '<div>{{ message }}</div>',
+  data: {
+    message: 'Hello Vue!'
+  }
 })

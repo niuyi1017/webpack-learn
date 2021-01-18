@@ -1,10 +1,44 @@
 const path = require('path')
+const fs = require('fs')
 const HtmlWebpackPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
+const webpack = require('webpack')
+
+const plugins = [
+  new CleanWebpackPlugin(),
+  new HtmlWebpackPlugin({
+    template: "src/index.html"
+  }),
+]
+
+const files = fs.readdirSync(path.resolve(__dirname, '../dll'));
+
+console.log(files)
+// files.forEach(file => {
+//   if(/.*\.dll.js/.test(file)){
+//     plugins.push(
+//       new AddAssetHtmlWebpackPlugin({
+//         filepath: path.resolve(__dirname, '../dll', file)
+//       })
+//     )
+//   }
+//   if(/.*\.manifest.json/.test(file)){
+//     plugins.push(new webpack.DllReferencePlugin({
+//       manifest: path.resolve(__dirname, './dll', file)
+//     }))
+//   }
+// })
 
 module.exports = {
   entry: {
     main: './src/index.js'
+  },
+  resolve:{
+    extensions: ['.js','.ts'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js' //内部为正则表达式  vue结尾的
+    }
   },
   module:{
     rules: [
@@ -46,20 +80,19 @@ module.exports = {
       }
     ]
   },
-  plugins:[
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: "src/index.html"
-    }),
-  ],
+  plugins,
   optimization: {
+    runtimeChunk: {
+      name: 'runtime'
+    },
     usedExports: true,
     splitChunks: {
       chunks: 'all'
     },
   },
+  performance: false,
   output:{
-    filename: '[name].[contentHash].js',
+    filename: '[name].[hash].js',
     path: path.resolve(__dirname, '../dist')
   }
 }
