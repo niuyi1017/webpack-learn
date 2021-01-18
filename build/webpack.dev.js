@@ -12,6 +12,19 @@ const devConfig = {
     hot: true,
     hotOnly: true
   },
+  module:{
+    rules: [{
+      test: /\.stylus$/,
+      use: [
+        {
+          loader: "css-loader",
+          options:{
+            importLoaders: 2,
+            modules:true
+          }
+         }, 'stylus-loader', "postcss-loader"]
+    }]
+  },
   plugins:[
     new webpack.HotModuleReplacementPlugin()
   ],

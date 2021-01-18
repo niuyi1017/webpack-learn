@@ -13,22 +13,20 @@ const plugins = [
 ]
 
 const files = fs.readdirSync(path.resolve(__dirname, '../dll'));
-
-console.log(files)
-// files.forEach(file => {
-//   if(/.*\.dll.js/.test(file)){
-//     plugins.push(
-//       new AddAssetHtmlWebpackPlugin({
-//         filepath: path.resolve(__dirname, '../dll', file)
-//       })
-//     )
-//   }
-//   if(/.*\.manifest.json/.test(file)){
-//     plugins.push(new webpack.DllReferencePlugin({
-//       manifest: path.resolve(__dirname, './dll', file)
-//     }))
-//   }
-// })
+files.forEach(file => {
+  if(/.*\.dll.js/.test(file)){
+    plugins.push(
+      new AddAssetHtmlWebpackPlugin({
+        filepath: path.resolve(__dirname, '../dll', file)
+      })
+    )
+  }
+  if(/.*\.manifest.json/.test(file)){
+    plugins.push(new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, '../dll', file)
+    }))
+  }
+})
 
 module.exports = {
   entry: {
@@ -37,7 +35,7 @@ module.exports = {
   resolve:{
     extensions: ['.js','.ts'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js' //内部为正则表达式  vue结尾的
+      'vue$': 'vue/dist/vue.esm.js' 
     }
   },
   module:{
@@ -59,25 +57,7 @@ module.exports = {
           loader: 'file-loader'
         }
       },
-      {
-        test: /\.stylus$/,
-        use: ['style-loader', {
-          loader: "css-loader",
-          options:{
-            importLoaders: 2,
-            modules:true
-          }
-        }, 'stylus-loader', "postcss-loader"]
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', "css-loader", "postcss-loader"]
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"]
-      }
+      
     ]
   },
   plugins,
