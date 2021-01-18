@@ -14,8 +14,9 @@ const devConfig = {
   },
   module:{
     rules: [{
-      test: /\.stylus$/,
+      test: /\.styl$/,
       use: [
+        'style-loader', 
         {
           loader: "css-loader",
           options:{
