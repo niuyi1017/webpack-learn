@@ -1,4 +1,10 @@
-import * as math from "./math"
-import * as string from "./string"
+import Vue from "vue"
+import './index.styl'
 
-export default { math, string }
+var app = new Vue({
+  el: '#app',
+  template: '<div>{{ message }}</div>',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
