@@ -8,7 +8,7 @@ const prodConfig =  {
   module: {
 		rules:[
       {
-        test: /\.stylus$/,
+        test: /\.styl$/,
         use: [
           MiniCssExtractPlugin.loader, 
           {
@@ -17,11 +17,15 @@ const prodConfig =  {
               importLoaders: 2,
               modules:true
             }
-           }, 'stylus-loader', "postcss-loader"]
+          }, "postcss-loader", 'stylus-loader']
       },
       {
         test: /\.css$/,
-        use: ['style-loader', "css-loader", "postcss-loader"]
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader", 
+          "postcss-loader"
+        ]
       },
       {
         test: /\.m?js$/,
@@ -31,7 +35,7 @@ const prodConfig =  {
 		]
 	},
   optimization: {
-		minimizer: [new OptimizeCSSAssetsPlugin({})]
+		minimizer: [new OptimizeCSSAssetsPlugin()]
 	},
   plugins: [
 		new MiniCssExtractPlugin({
