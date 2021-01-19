@@ -52,5 +52,6 @@
     "jquery": "^3.5.1",
     "vue": "^2.6.12",
     "vue-router": "^3.4.9"
-  }
+  },
+  "browserslist": ["last 100 versions"]
 }

@@ -13,18 +13,20 @@ const devConfig = {
     hotOnly: true
   },
   module:{
-    rules: [{
-      test: /\.styl$/,
-      use: [
-        'style-loader', 
-        {
-          loader: "css-loader",
-          options:{
-            importLoaders: 2,
-            modules:true
-          }
-         }, "postcss-loader", 'stylus-loader' ]
-    }]
+    rules: [
+      {
+        test: /\.styl$/,
+        use: [
+          'style-loader', 
+          {
+            loader: "css-loader",
+            options:{
+              importLoaders: 2,
+              modules:true
+            }
+          }, "postcss-loader", 'stylus-loader' ]
+      }
+  ]
   },
   plugins:[
     new webpack.HotModuleReplacementPlugin()
