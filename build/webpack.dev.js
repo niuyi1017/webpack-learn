@@ -23,7 +23,7 @@ const devConfig = {
             importLoaders: 2,
             modules:true
           }
-         }, 'stylus-loader', "postcss-loader"]
+         }, "postcss-loader", 'stylus-loader' ]
     }]
   },
   plugins:[
